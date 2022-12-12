@@ -1,0 +1,53 @@
+{% extends "./base.html" %} 
+{% load crispy_forms_tags %} 
+{% block all_student %}
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">All Student</h1>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-5 col-lg-8 mx-auto">
+        <table class="table align-middle mb-0 bg-white">
+          <thead class="bg-light">
+            <tr>
+              <th class="text-center">Number</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Roll Number</th>
+              <th class="text-center">Address</th>
+              <th class="text-center">Instagram Link</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in data %}
+            <tr>
+              <td>{{forloop.counter }}</td>
+              <td>{{d.name}}</td>
+              <td>{{d.roll_number}}</td>
+              <td>{{d.address}}</td>
+              <td>
+                <a href="{{d.instagram_link}}" target="_blank"
+                  >{{d.instagram_link}}</a
+                >
+              </td>
+              <td>
+                <a
+                  href="{% url 'edit_student' d.name  %}"
+                  class="btn btn-link btn-sm btn-rounded"
+                >
+                  Edit
+                </a>
+                <a href="{% url 'delete_student' d.name  %}" class="btn btn-link btn-sm btn-rounded"> Delete </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock all_student %} 

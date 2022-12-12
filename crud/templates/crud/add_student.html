@@ -1,0 +1,24 @@
+{% extends "./base.html" %} 
+{% load crispy_forms_tags %}  
+{% block add_student %}
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">Add Student</h1>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-5 col-lg-8 mx-auto">
+        <form action="#" method="post" novalidate>
+          {% csrf_token %} 
+          {{form|crispy}}
+          <div class="py-2">
+              <input type="submit" value="Add Student" class="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock add_student %}
